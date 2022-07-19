@@ -1,0 +1,138 @@
+all:
+  hosts:
+    container:
+      ansible_connection: kubectl
+      ansible_host: pod-centos-7-0000000001
+      ansible_kubectl_context: main:zuul-worker/managesf-sftests-com:9023
+      ansible_port: null
+      ansible_python_interpreter: /bin/python2
+      ansible_ssh_common_args: -o StrictHostKeyChecking=false
+      ansible_user: zuul
+      nodepool:
+        az: null
+        cloud: null
+        external_id: main-pod-centos-7-0000000001
+        host_id: null
+        interface_ip: pod-centos-7-0000000001
+        label: pod-centos-7
+        private_ipv4: null
+        private_ipv6: null
+        provider: managed-k1s-provider-managesf
+        public_ipv4: null
+        public_ipv6: null
+        region: null
+      test_command: date
+      zuul_use_fetch_output: true
+  vars:
+    test_command: date
+    zuul:
+      _inheritance_path:
+      - '<Job base branches: None source: config/zuul.d/_jobs-base.yaml@master#3>'
+      - '<Job unittests branches: None source: zuul-jobs/zuul.d/general-jobs.yaml@master#9>'
+      - '<Job run-test-command branches: None source: zuul-jobs/zuul.d/general-jobs.yaml@master#51>'
+      - '<Job my-run-test-command branches: None source: config/zuul.d/projects.yaml@master#13>'
+      - '<Job my-run-test-command branches: None source: config/zuul.d/projects.yaml@master#8>'
+      attempts: 1
+      branch: master
+      build: 555a299c954d4c37b94aa87e11ec692e
+      buildset: 03be3553a2e543ef98afb684597bddb7
+      change: '850431'
+      change_url: https://review.opendev.org/c/opendev/ci-sandbox/+/850431
+      child_jobs: []
+      event_id: b10bc68e30d74193a9119e03cd60a7d3
+      executor:
+        hostname: managesf.sftests.com
+        inventory_file: /var/lib/zuul/builds/555a299c954d4c37b94aa87e11ec692e/ansible/inventory.yaml
+        log_root: /var/lib/zuul/builds/555a299c954d4c37b94aa87e11ec692e/work/logs
+        result_data_file: /var/lib/zuul/builds/555a299c954d4c37b94aa87e11ec692e/work/results.json
+        src_root: /var/lib/zuul/builds/555a299c954d4c37b94aa87e11ec692e/work/src
+        work_root: /var/lib/zuul/builds/555a299c954d4c37b94aa87e11ec692e/work
+      items:
+      - branch: master
+        change: '850431'
+        change_url: https://review.opendev.org/c/opendev/ci-sandbox/+/850431
+        patchset: '2'
+        project:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/opendev/ci-sandbox
+          name: opendev/ci-sandbox
+          short_name: ci-sandbox
+          src_dir: src/opendev.org/opendev/ci-sandbox
+      job: my-run-test-command
+      jobtags: []
+      message: QWRkZWQgdGVzdCBmaWxlCgpDaGFuZ2UtSWQ6IEk5YmIxMjJhODIwNjhlMDUyMmQ1YTY1M2VjMzJmYzQzNjAyYTU3Njc4Cg==
+      patchset: '2'
+      pipeline: check
+      playbook_context:
+        playbook_projects:
+          trusted/project_0/sftests.com/config:
+            canonical_name: sftests.com/config
+            checkout: master
+            commit: aa5502e1fef4d0e29fb0d3bd3774825f0c35c4ed
+          trusted/project_1/sftests.com/sf-jobs:
+            canonical_name: sftests.com/sf-jobs
+            checkout: master
+            commit: 176d24817993b9975ffb4b87a6e1825764ceeeb9
+          trusted/project_2/sftests.com/zuul-jobs:
+            canonical_name: sftests.com/zuul-jobs
+            checkout: master
+            commit: 19243afbec6b3980b38a1feffa89a74032becb8c
+          untrusted/project_0/sftests.com/zuul-jobs:
+            canonical_name: sftests.com/zuul-jobs
+            checkout: master
+            commit: 19243afbec6b3980b38a1feffa89a74032becb8c
+          untrusted/project_1/sftests.com/config:
+            canonical_name: sftests.com/config
+            checkout: master
+            commit: aa5502e1fef4d0e29fb0d3bd3774825f0c35c4ed
+          untrusted/project_2/sftests.com/sf-jobs:
+            canonical_name: sftests.com/sf-jobs
+            checkout: master
+            commit: 176d24817993b9975ffb4b87a6e1825764ceeeb9
+        playbooks:
+        - path: untrusted/project_0/sftests.com/zuul-jobs/playbooks/run-test-command/run.yaml
+          roles:
+          - checkout: master
+            checkout_description: zuul branch
+            link_name: ansible/playbook_0/role_0/config
+            link_target: untrusted/project_1/sftests.com/config
+            role_path: ansible/playbook_0/role_0/config/roles
+          - checkout: master
+            checkout_description: zuul branch
+            link_name: ansible/playbook_0/role_1/sf-jobs
+            link_target: untrusted/project_2/sftests.com/sf-jobs
+            role_path: ansible/playbook_0/role_1/sf-jobs/roles
+          - checkout: master
+            checkout_description: playbook branch
+            link_name: ansible/playbook_0/role_2/zuul-jobs
+            link_target: untrusted/project_0/sftests.com/zuul-jobs
+            role_path: ansible/playbook_0/role_2/zuul-jobs/roles
+      post_review: false
+      project:
+        canonical_hostname: opendev.org
+        canonical_name: opendev.org/opendev/ci-sandbox
+        name: opendev/ci-sandbox
+        short_name: ci-sandbox
+        src_dir: src/opendev.org/opendev/ci-sandbox
+      projects:
+        opendev.org/opendev/ci-sandbox:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/opendev/ci-sandbox
+          checkout: master
+          checkout_description: zuul branch
+          commit: c0d064657c37d8457f585597718f87492dfd2a64
+          name: opendev/ci-sandbox
+          required: false
+          short_name: ci-sandbox
+          src_dir: src/opendev.org/opendev/ci-sandbox
+      ref: refs/changes/31/850431/2
+      resources:
+        container:
+          context: main:zuul-worker/managesf-sftests-com:9023
+          namespace: main
+          pod: pod-centos-7-0000000001
+          stream_port: '41005'
+      tenant: local
+      timeout: 1800
+      voting: true
+    zuul_use_fetch_output: true

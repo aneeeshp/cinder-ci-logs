@@ -1,0 +1,25 @@
+- admin-rule:
+    conditions:
+    - groups: config-ptl
+    - groups: config-core
+    name: config-acl
+- admin-rule:
+    conditions:
+    - groups: demo-project-core
+    name: demo-project-acl
+- tenant:
+    max-job-timeout: 10800
+    name: local
+    report-build-page: true
+    source:
+      gerrit:
+        config-projects:
+        - config: {}
+        untrusted-projects:
+        - demo-project
+        - demo-project-distgit
+        - sf-jobs: {}
+        - zuul-jobs:
+            include:
+            - job
+            shadow: sf-jobs

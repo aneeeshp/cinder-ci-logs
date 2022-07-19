@@ -1,0 +1,27 @@
+build-log-dir: /var/www/html/nodepool-builder/
+build-log-retention: 7
+diskimages: []
+elements-dir: /etc/nodepool/elements:/usr/share/sf-elements
+images-dir: /var/lib/nodepool/dib
+labels:
+- name: pod-centos-7
+providers:
+- context: /k1s-managesf/managed
+  driver: openshiftpods
+  max-pods: 10
+  name: managed-k1s-provider-managesf
+  pools:
+  - labels:
+    - image: localhost/k1s/centos-7
+      name: pod-centos-7
+      python-path: /bin/python2
+    name: main
+webapp:
+  port: 8006
+zookeeper-servers:
+- host: managesf.sftests.com
+  port: 2281
+zookeeper-tls:
+  ca: /etc/nodepool/ssl/zk-ca.pem
+  cert: /etc/nodepool/ssl/zookeeper.crt
+  key: /etc/nodepool/ssl/zookeeper.key
