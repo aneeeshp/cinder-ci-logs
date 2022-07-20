@@ -1,0 +1,98 @@
+all:
+  hosts: {}
+  vars:
+    gateway_url: https://sftests.com
+    tenant_config: false
+    zuul:
+      _inheritance_path:
+      - '<Job base branches: None source: config/zuul.d/_jobs-base.yaml@master#3>'
+      - '<Job config-check branches: None source: config/zuul.d/_jobs-base.yaml@master#28>'
+      - '<Job config-check branches: None source: config/zuul.d/_jobs-base.yaml@master#60>'
+      attempts: 1
+      branch: master
+      build: 49115f18104449c194139fdc7541a960
+      buildset: c215af9c3cb14c75883a8f02eb11011b
+      change: '7'
+      change_url: https://sftests.com/r/7
+      child_jobs: []
+      event_id: eb094f502322447b8929f2d57087636f
+      executor:
+        hostname: managesf.sftests.com
+        inventory_file: /var/lib/zuul/builds/49115f18104449c194139fdc7541a960/ansible/inventory.yaml
+        log_root: /var/lib/zuul/builds/49115f18104449c194139fdc7541a960/work/logs
+        result_data_file: /var/lib/zuul/builds/49115f18104449c194139fdc7541a960/work/results.json
+        src_root: /var/lib/zuul/builds/49115f18104449c194139fdc7541a960/work/src
+        work_root: /var/lib/zuul/builds/49115f18104449c194139fdc7541a960/work
+      items:
+      - branch: master
+        change: '7'
+        change_url: https://sftests.com/r/7
+        patchset: '1'
+        project:
+          canonical_hostname: sftests.com
+          canonical_name: sftests.com/config
+          name: config
+          short_name: config
+          src_dir: src/sftests.com/config
+      job: config-check
+      jobtags: []
+      message: VXBkYXRlZCBzdWNjZXNzIGxvZyB1cmwKCkNoYW5nZS1JZDogSTk5ZDQ4OTRmMjI0YTBjZDA5ZmNhMTUxYzExZDZmNDZhY2ZmOTJmNGEK
+      patchset: '1'
+      pipeline: check
+      playbook_context:
+        playbook_projects:
+          trusted/project_0/sftests.com/config:
+            canonical_name: sftests.com/config
+            checkout: master
+            commit: 911c19a23b1fca0b9a15f6678eecb04b727ed578
+          trusted/project_1/sftests.com/sf-jobs:
+            canonical_name: sftests.com/sf-jobs
+            checkout: master
+            commit: 176d24817993b9975ffb4b87a6e1825764ceeeb9
+          trusted/project_2/sftests.com/zuul-jobs:
+            canonical_name: sftests.com/zuul-jobs
+            checkout: master
+            commit: 19243afbec6b3980b38a1feffa89a74032becb8c
+        playbooks:
+        - path: trusted/project_0/sftests.com/config/playbooks/config/check.yaml
+          roles:
+          - checkout: master
+            checkout_description: playbook branch
+            link_name: ansible/playbook_0/role_0/config
+            link_target: trusted/project_0/sftests.com/config
+            role_path: ansible/playbook_0/role_0/config/roles
+          - checkout: master
+            checkout_description: zuul branch
+            link_name: ansible/playbook_0/role_1/sf-jobs
+            link_target: trusted/project_1/sftests.com/sf-jobs
+            role_path: ansible/playbook_0/role_1/sf-jobs/roles
+          - checkout: master
+            checkout_description: zuul branch
+            link_name: ansible/playbook_0/role_2/zuul-jobs
+            link_target: trusted/project_2/sftests.com/zuul-jobs
+            role_path: ansible/playbook_0/role_2/zuul-jobs/roles
+      post_review: false
+      project:
+        canonical_hostname: sftests.com
+        canonical_name: sftests.com/config
+        name: config
+        short_name: config
+        src_dir: src/sftests.com/config
+      projects:
+        sftests.com/config:
+          canonical_hostname: sftests.com
+          canonical_name: sftests.com/config
+          checkout: master
+          checkout_description: zuul branch
+          commit: c9f635841fb4fe304d3f82772a957d1edb1c634f
+          name: config
+          required: false
+          short_name: config
+          src_dir: src/sftests.com/config
+      ref: refs/changes/07/7/1
+      resources: {}
+      tenant: local
+      timeout: 1800
+      voting: true
+    zuul_log_url: https://sftests.com/logs
+    zuul_use_fetch_output: true
